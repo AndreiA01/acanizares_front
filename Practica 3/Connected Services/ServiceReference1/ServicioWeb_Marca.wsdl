@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SeleccionarMarcas">
+        <s:complexType />
+      </s:element>
+      <s:element name="SeleccionarMarcasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SeleccionarMarcasResult" type="tns:ArrayOfMarca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMarca">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="marca" nillable="true" type="tns:marca" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="marca">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_marca" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="modelo" type="tns:ArrayOfModelo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfModelo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="modelo" nillable="true" type="tns:modelo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="modelo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id_modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="id_marca" nillable="true" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SeleccionarMarcasModelos">
+        <s:complexType />
+      </s:element>
+      <s:element name="SeleccionarMarcasModelosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SeleccionarMarcasModelosResult" type="tns:ArrayOfMarca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeleccionarMarcaModelosLinq">
+        <s:complexType />
+      </s:element>
+      <s:element name="SeleccionarMarcaModelosLinqResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SeleccionarMarcaModelosLinqResult" type="tns:ArrayOfMarca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeleccionarMarcaModelosID_DTO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idMarca" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SeleccionarMarcaModelosID_DTOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SeleccionarMarcaModelosID_DTOResult" type="tns:DTO_Marca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DTO_Marca">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_marca" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="modelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertarMarca">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nuevo" type="tns:marca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarMarcaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertarMarcaResult" type="tns:marca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarMarca">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="actualizar" type="tns:marca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarMarcaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarMarcaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarMarca">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eliminar" type="tns:marca" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarMarcaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarMarcaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SeleccionarMarcasSoapIn">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcas" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcasSoapOut">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcasResponse" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcasModelosSoapIn">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcasModelos" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcasModelosSoapOut">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcasModelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcaModelosLinqSoapIn">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcaModelosLinq" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcaModelosLinqSoapOut">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcaModelosLinqResponse" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcaModelosID_DTOSoapIn">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcaModelosID_DTO" />
+  </wsdl:message>
+  <wsdl:message name="SeleccionarMarcaModelosID_DTOSoapOut">
+    <wsdl:part name="parameters" element="tns:SeleccionarMarcaModelosID_DTOResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarMarcaSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarMarca" />
+  </wsdl:message>
+  <wsdl:message name="InsertarMarcaSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarMarcaSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarMarca" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarMarcaSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarMarcaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarMarcaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarMarca" />
+  </wsdl:message>
+  <wsdl:message name="EliminarMarcaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarMarcaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioWeb_MarcaSoap">
+    <wsdl:operation name="SeleccionarMarcas">
+      <wsdl:input message="tns:SeleccionarMarcasSoapIn" />
+      <wsdl:output message="tns:SeleccionarMarcasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcasModelos">
+      <wsdl:input message="tns:SeleccionarMarcasModelosSoapIn" />
+      <wsdl:output message="tns:SeleccionarMarcasModelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcaModelosLinq">
+      <wsdl:input message="tns:SeleccionarMarcaModelosLinqSoapIn" />
+      <wsdl:output message="tns:SeleccionarMarcaModelosLinqSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcaModelosID_DTO">
+      <wsdl:input message="tns:SeleccionarMarcaModelosID_DTOSoapIn" />
+      <wsdl:output message="tns:SeleccionarMarcaModelosID_DTOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarMarca">
+      <wsdl:input message="tns:InsertarMarcaSoapIn" />
+      <wsdl:output message="tns:InsertarMarcaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMarca">
+      <wsdl:input message="tns:ActualizarMarcaSoapIn" />
+      <wsdl:output message="tns:ActualizarMarcaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarca">
+      <wsdl:input message="tns:EliminarMarcaSoapIn" />
+      <wsdl:output message="tns:EliminarMarcaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioWeb_MarcaSoap" type="tns:ServicioWeb_MarcaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SeleccionarMarcas">
+      <soap:operation soapAction="http://tempuri.org/SeleccionarMarcas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcasModelos">
+      <soap:operation soapAction="http://tempuri.org/SeleccionarMarcasModelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcaModelosLinq">
+      <soap:operation soapAction="http://tempuri.org/SeleccionarMarcaModelosLinq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcaModelosID_DTO">
+      <soap:operation soapAction="http://tempuri.org/SeleccionarMarcaModelosID_DTO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarMarca">
+      <soap:operation soapAction="http://tempuri.org/InsertarMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMarca">
+      <soap:operation soapAction="http://tempuri.org/ActualizarMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarca">
+      <soap:operation soapAction="http://tempuri.org/EliminarMarca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioWeb_MarcaSoap12" type="tns:ServicioWeb_MarcaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SeleccionarMarcas">
+      <soap12:operation soapAction="http://tempuri.org/SeleccionarMarcas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcasModelos">
+      <soap12:operation soapAction="http://tempuri.org/SeleccionarMarcasModelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcaModelosLinq">
+      <soap12:operation soapAction="http://tempuri.org/SeleccionarMarcaModelosLinq" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SeleccionarMarcaModelosID_DTO">
+      <soap12:operation soapAction="http://tempuri.org/SeleccionarMarcaModelosID_DTO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarMarca">
+      <soap12:operation soapAction="http://tempuri.org/InsertarMarca" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMarca">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarMarca" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarMarca">
+      <soap12:operation soapAction="http://tempuri.org/EliminarMarca" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioWeb_Marca">
+    <wsdl:port name="ServicioWeb_MarcaSoap" binding="tns:ServicioWeb_MarcaSoap">
+      <soap:address location="http://localhost:3908/ServicioWeb_Marca.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioWeb_MarcaSoap12" binding="tns:ServicioWeb_MarcaSoap12">
+      <soap12:address location="http://localhost:3908/ServicioWeb_Marca.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
